@@ -1,11 +1,24 @@
-import './App.css'
+import React from "react";
+import {
+  Container,
+  CssBaseline,
+  ThemeProvider,
+  createTheme,
+} from "@mui/material";
+import "./App.css";
+import AutoTopUp from "./components/AutoTopUp";
 
-function App() {
+const theme = createTheme();
+
+const App: React.FC = () => {
   return (
-    <>
-      Hello
-    </>
-  )
-}
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Container>
+        <AutoTopUp />
+      </Container>
+    </ThemeProvider>
+  );
+};
 
-export default App
+export default App;

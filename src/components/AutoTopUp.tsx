@@ -70,6 +70,45 @@ const IOSSwitch = styled((props: SwitchProps) => (
   },
 }));
 
+const PrettoSlider = styled(Slider)({
+  color: "#52af77",
+  height: 8,
+  "& .MuiSlider-track": {
+    border: "none",
+  },
+  "& .MuiSlider-thumb": {
+    height: 18,
+    width: 18,
+    backgroundColor: "#fff",
+    border: "4px solid currentColor",
+    "&:focus, &:hover, &.Mui-active, &.Mui-focusVisible": {
+      boxShadow: "inherit",
+    },
+    "&::before": {
+      display: "none",
+    },
+  },
+  "& .MuiSlider-valueLabel": {
+    lineHeight: 1.2,
+    fontSize: 16,
+    background: "unset",
+    padding: 0,
+    width: 40,
+    height: 40,
+    borderRadius: "50% 50% 50% 0",
+    backgroundColor: "#52af77",
+    transformOrigin: "bottom left",
+    transform: "translate(50%, -100%) rotate(-45deg) scale(0)",
+    "&::before": { display: "none" },
+    "&.MuiSlider-valueLabelOpen": {
+      transform: "translate(50%, -100%) rotate(-45deg) scale(1)",
+    },
+    "& > *": {
+      transform: "rotate(45deg)",
+    },
+  },
+});
+
 const AutoTopUp: React.FC = () => {
   const [isEnabled, setIsEnabled] = useState(true);
   const [value, setValue] = useState<number>(10);
@@ -85,7 +124,7 @@ const AutoTopUp: React.FC = () => {
     } else if (value === 10) {
       console.log(`Selected credits: 1200`);
     } else if (value === 15) {
-      console.log(`Selected credits: 100`);
+      console.log(`Selected credits: 1700`);
     } else if (value === 20) {
       console.log(`Selected credits: 2500`);
     } else if (value === 25) {
@@ -114,7 +153,7 @@ const AutoTopUp: React.FC = () => {
             them to your account. <b className="link">Learn more</b>
           </Typography>
           <Box className="slider-container">
-            <Slider
+            <PrettoSlider
               value={value}
               onChange={handleSliderChange}
               step={null}
@@ -136,6 +175,7 @@ const AutoTopUp: React.FC = () => {
               width: "100%",
               justifyContent: "space-between",
               marginBottom: "20px",
+              flexWrap: "wrap"
             }}
           >
             <Typography variant="caption" className="credits">
